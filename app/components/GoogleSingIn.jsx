@@ -11,7 +11,6 @@ export default function GoogleSignIn() {
     const onSignInClick = async() => {
         try{
             const data = await signInWithPopup(auth,provider)
-            alert(data)
             setLoginPopup(false)
         }
         catch(err){

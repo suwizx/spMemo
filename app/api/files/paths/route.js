@@ -1,4 +1,4 @@
-import { store } from "../lib/firebase"
+import { store } from "@/app/lib/firebase"
 import { ref , listAll } from 'firebase/storage'
 
 async function GetList () {
@@ -7,17 +7,15 @@ async function GetList () {
         let folder = []
         const list = await listAll(datasRef)
         const prefixes = list.prefixes
-        prefixes.forEach((data) => {console.log(data._location.path_);})
+        prefixes.forEach((data) => {folder.push(data._location.path_);})
+        return folder
     }catch(err){
         return err
     }
-
 }
 
-export default async function Page(){
-    return(
-        <>
-        {JSON.stringify(await GetList())}
-        </>
-    )
+export async function GET(){
+
+    const data = await GetList()
+    return Response.json({paths:data})
 }

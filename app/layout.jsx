@@ -1,7 +1,10 @@
+'use client'
+import { Next13ProgressBar } from 'next13-progressbar';
 import localFont from 'next/font/local'
 import "./globals.css";
 import Header from './components/Header';
 import LoginProvider from './Provider/LoginProvider';
+
 
 const MiSans = localFont({src:[
   {
@@ -29,10 +32,10 @@ const MiSansTH = localFont({src:[
   variable : '--font-misansth'
 })
 
-export const metadata = {
-  title: "SP Memo",
-  description: "ความทรงจำ",
-};
+// export const metadata = {
+//   title: "SP Memo",
+//   description: "ความทรงจำ",
+// };
 
 export default function RootLayout({ children }) {
   return (
@@ -41,6 +44,7 @@ export default function RootLayout({ children }) {
         <body className={`${MiSansTH.variable} ${MiSans.variable} font-misans`}>
         <div className='bg-zinc-950 text-white min-h-screen transition'>
           <Header />
+          <Next13ProgressBar color="#f00" />
           {children}
         </div>
         </body>

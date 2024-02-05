@@ -31,7 +31,7 @@ export default async function Page({ params }){
     return(
         <div className="max-w-xl p-4 mx-auto">
             {imgURL.map((data,i) => (
-                <div className="bg-zinc-900 border border-zinc-800 py-4 rounded-xl my-4">
+                <div key={i} className="bg-zinc-900 border border-zinc-800 py-4 rounded-xl my-4">
                     <img className="aspect-square object-cover  my-4" src={data.url} alt="test" />
                     <p className="p-4">{data.Imgpath.split(`${path}/`)[1]}</p>
                 </div>

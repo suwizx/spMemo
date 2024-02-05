@@ -18,6 +18,10 @@ export default function Login(){
                         <button onClick={() => {setLoginPopup(false)}}><X /></button>
                     </div>
                     <div className='mt-4'>
+                        <div className='mb-2'>
+                            <input type="email" className='border border-zinc-800 bg-zinc-900 w-full p-2' />
+                            <input type="submit" className='border border-zinc-800 bg-zinc-900 w-full p-2' />
+                        </div>
                         <GoogleSingIn />
                     </div>
                 </div>

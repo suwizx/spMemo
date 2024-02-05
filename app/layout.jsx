@@ -38,9 +38,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <LoginProvider>
-        <body className={`${MiSansTH.variable} ${MiSans.variable} font-misans bg-zinc-950 text-white min-h-screen transition`}>
+        <body className={`${MiSansTH.variable} ${MiSans.variable} font-misans`}>
+        <div className='bg-zinc-950 text-white min-h-screen transition'>
           <Header />
           {children}
+        </div>
         </body>
       </LoginProvider>
     </html>

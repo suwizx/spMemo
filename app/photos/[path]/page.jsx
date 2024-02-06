@@ -1,5 +1,5 @@
 import { store } from "@/app/lib/firebase" 
-import { ref , listAll , getStorage , getDownloadURL } from "firebase/storage"
+import { ref , listAll , getDownloadURL } from "firebase/storage"
 
 async function getPhotoFromPath(path){
     const photoRef = ref(store,path)
@@ -32,7 +32,7 @@ export default async function Page({ params }){
         <div className="max-w-xl p-4 mx-auto">
             {imgURL.map((data,i) => (
                 <div key={i} className="bg-zinc-900 border border-zinc-800 py-4 rounded-xl my-4">
-                    <img className="aspect-square object-cover  my-4" src={data.url} alt="test" />
+                    <img className="aspect-square object-cover  my-4" src={data.url} alt={data.Imgpath.split(`${path}/`)[1]} />
                     <p className="p-4">{data.Imgpath.split(`${path}/`)[1]}</p>
                 </div>
             ))}

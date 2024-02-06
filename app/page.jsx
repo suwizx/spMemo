@@ -1,8 +1,10 @@
 import PathGrid from "./components/grids/PathGrid";
 import { store } from "@/app/lib/firebase"
 import { ref , listAll } from 'firebase/storage'
+import { unstable_noStore as noStore } from 'next/cache';
 
 async function datasFetch(){
+  noStore()
   const datasRef = ref(store)
   try{
       let folder = []
@@ -15,7 +17,8 @@ async function datasFetch(){
   }
 }
           
-export default async function Home() {        
+export default async function Home() {  
+  noStore()      
 
   const paths = await datasFetch()
 

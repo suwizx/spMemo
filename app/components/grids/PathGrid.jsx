@@ -35,7 +35,7 @@ export default async function PathGrid(props){
     return(
         <Link href={`/photos/${path}`} className="bg-zinc-900 p-4 py-6 rounded-lg border border-zinc-800 hover:shadow-lg hover:shadow-red-700/50 hover:border-red-500 w-full bolck">
             {photo.length >= 1 ? 
-            (<img src={photo[0]?.url} className="h-[70px] w-[70px] bg-zinc-950 mx-auto mb-4 rounded-full border border-zinc-800" />) 
+            (<img src={photo[0]?.url} className="h-[70px] w-[70px] bg-zinc-950 mx-auto mb-4 rounded-full border border-zinc-800 object-cover" />) 
             : (<div className="h-[70px] w-[70px] bg-zinc-950 mx-auto mb-4 rounded-full border border-zinc-800" />)}
             
             <h2 className="font-bold text-xl text-center">{path}</h2>

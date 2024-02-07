@@ -1,3 +1,6 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
 import { GoogleAuthProvider , signInWithPopup } from "firebase/auth";
 import { auth } from "../lib/firebase"; 
 import { useContext } from "react";
@@ -5,13 +8,14 @@ import { LoginContext } from "../Provider/LoginProvider";
 const provider = new GoogleAuthProvider();
 
 export default function GoogleSignIn() {
-
+    const router = useRouter()
     const { setLoginPopup } = useContext(LoginContext)
 
     const onSignInClick = async() => {
         try{
             const data = await signInWithPopup(auth,provider)
             setLoginPopup(false)
+            await router.push("/dashboard")
         }
         catch(err){
             console.log(err);

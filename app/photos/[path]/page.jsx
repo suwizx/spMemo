@@ -20,11 +20,11 @@ async function GetURL(path){
     const photosArr = await getPhotoFromPath(path)
     const promiseArr = photosArr.map((data) => {
         return getDownloadURL(ref(store, data)).then(async(url) => {
+            const { base64 } = await getBlurData(url)
             picArr.push({url,Imgpath:data,base64});
         });
     });
     await Promise.all(promiseArr);
-    console.log(picArr);
     return picArr
 }
 

@@ -1,7 +1,6 @@
 import { store } from "@/app/lib/firebase" 
 import { ref , listAll , getDownloadURL } from "firebase/storage"
 import Image from 'next/image'
-import { getBlurData } from "@/app/lib/blur-data-generator";
 
 async function getPhotoFromPath(path){
     const photoRef = ref(store,path)
@@ -20,8 +19,7 @@ async function GetURL(path){
     const photosArr = await getPhotoFromPath(path)
     const promiseArr = photosArr.map((data) => {
         return getDownloadURL(ref(store, data)).then(async(url) => {
-            const { base64 } = await getBlurData(url)
-            picArr.push({url,Imgpath:data,base64});
+            picArr.push({url,Imgpath:data});
         });
     });
     await Promise.all(promiseArr);
@@ -35,7 +33,7 @@ export default async function Page({ params }){
         <div className="max-w-xl p-4 mx-auto">
             {imgURL.map((data,i) => (
                 <div key={i} className="bg-zinc-900 border border-zinc-800 py-4 rounded-xl my-4">
-                    <Image sizes="100vw" width={0} placeholder="blur" blurDataURL={data.base64} height={0} priority className="block aspect-square object-cover w-full my-4" src={data.url} alt={data.Imgpath.split(`${path}/`)[1]} />
+                    <Image sizes="100vw" width={0} height={0} priority className="block aspect-square object-cover w-full my-4" src={data.url} alt={data.Imgpath.split(`${path}/`)[1]} />
                     <p className="p-4">{data.Imgpath.split(`${path}/`)[1]}</p>
                 </div>
             ))}

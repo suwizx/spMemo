@@ -12,7 +12,6 @@ const LoginProvider = ({children}) => {
 
     onAuthStateChanged(auth,(user) => {
         setUser(user)
-        console.log("provider",user);
     })
 
     return(

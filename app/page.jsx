@@ -52,8 +52,10 @@ export default async function Home() {
         animate="visible" 
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-b border-zinc-800 py-4">
         {paths.map((data,i) => (
-          <motion.dev key={i} variants={item}>
-            <PathGrid path={data} />
+          <motion.dev key={i} variants={item} >
+            <PathGrid 
+            path={data} 
+           />
           </motion.dev>
         ))}
       </motion.div>

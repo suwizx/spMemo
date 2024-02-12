@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <LoginProvider>
         <body className={`${MiSansTH.variable} ${MiSans.variable} font-misans`}>
-        <div className='bg-zinc-950 text-white min-h-screen transition'>
+        <div className='bg-zinc-950 text-white min-h-screen transition overflow-x-hidden'>
           <Header />
           <Next13ProgressBar color="#f00" />
           {children}

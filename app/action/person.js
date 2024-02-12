@@ -10,7 +10,6 @@ import axios from 'axios'
 config()
 
 async function notify(message){
-
     const FormData = require('form-data');
     let data = new FormData();
     data.append('message', message);
@@ -36,13 +35,11 @@ async function notify(message){
 }
 
 async function uploadFile(file,link){
-
     const fileRef = ref(store , `${link}/${uuidv4()}-${file.name}`)
     uploadBytes(fileRef, file).then((snapshot) => {
         console.log('Uploaded a blob or file!');
         notify(`file uploaded : ${link}/${uuidv4()}-${file.name}`)
     })
-
 }
 
 async function createPerson(formData){
@@ -59,10 +56,11 @@ async function createPerson(formData){
         const docRef = await addDoc(collection(db,"person"),{
             name:data.name , link:data.link , discription:data.discription
         })
-
+        return {sucessful:true}
     }
     catch(err){
         console.log(err);
+        return {sucessful:false}
     }
 }
 

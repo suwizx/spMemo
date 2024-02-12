@@ -1,12 +1,14 @@
 'use client'
 
+import { toast } from 'sonner';
 import { useForm } from "react-hook-form"
-import { UserPlus , FileImage , FileUp } from 'lucide-react'
+import { UserPlus , FileImage , FileUp , Loader2 } from 'lucide-react'
 import { createPerson } from "@/app/action/person"
 import { useState } from "react"
 
 export default function Page(){
 
+    const [ submitLoading , setSubmitloading ] = useState(false)
     const [selectedFile , setSelctedFile] = useState(false)
     const [URLImage , setURLImage] = useState()
 
@@ -27,13 +29,16 @@ export default function Page(){
     }
 
     const submit = async (data) => {
+        await setSubmitloading(true)
         console.log(data);
         const formData = new FormData();
         formData.append("name",data.name)
         formData.append("link",data.link)
         formData.append("discription",data.discription)
         formData.append("file",data.image[0])
-        createPerson(formData)
+        await createPerson(formData)
+        await setSubmitloading(false)
+        toast("สร้างเรียบร้อย",{duration:5000})
     }
 
     return(
@@ -82,7 +87,7 @@ export default function Page(){
                         <p className="mt-2 text-sm text-red-400">กรุณาเลือกรูปภาพ</p>
                         )}
                     </div>
-                    <button type="submit" className="mb-4 bg-gradient-to-tr from-red-400 to-red-600 py-2 px-2 mt-2 rounded-lg hover:scale-95 transition w-full block"><span><UserPlus className='mr-2 inline-block'/></span>เพิ่มคน</button>
+                    <button type="submit" className="mb-4 bg-gradient-to-tr from-red-400 to-red-600 py-2 px-2 mt-2 rounded-lg hover:scale-95 transition w-full block"><span>{submitLoading ? (<Loader2 className='mr-2 inline-block animate-spin'/>) : (<UserPlus className='mr-2 inline-block'/>) }</span>เพิ่มคน</button>
                 </form>
             </div>
         </div>

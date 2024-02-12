@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import "./globals.css";
 import Header from './components/Header';
 import LoginProvider from './Provider/LoginProvider';
+import { Toaster } from 'sonner';
 
 
 const MiSans = localFont({src:[
@@ -46,6 +47,10 @@ export default function RootLayout({ children }) {
           <Header />
           <Next13ProgressBar color="#f00" />
           {children}
+          <Toaster className='font-misans bg-red-500' toastOptions={{ unstyled: true , classNames: {
+      toast: 'bg-zinc-950/50 p-2 rounded-lg border border-zinc-800 font-misans w-full',
+     
+    },}} />
         </div>
         </body>
       </LoginProvider>

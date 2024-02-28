@@ -43,10 +43,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <LoginProvider>
         <body className={`${MiSansTH.variable} ${MiSans.variable} font-misans`}>
-        <div className='bg-zinc-950 text-white min-h-screen transition overflow-x-hidden'>
+        <div className='bg-zinc-950 text-white min-h-screen transition'>
           <Header />
           <Next13ProgressBar color="#f00" />
-          {children}
+          <div className='overflow-x-hidden'>
+            {children}
+          </div>
           <Toaster className='font-misans bg-red-500' toastOptions={{ unstyled: true , classNames: {
       toast: 'bg-zinc-950/50 p-2 rounded-lg border border-zinc-800 font-misans w-full',
      

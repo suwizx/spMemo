@@ -23,7 +23,7 @@ export default function Header(){
         <>  
             { isCraetePopup && (<CreatePopup setCreatePopup={setCreatePopup} />)}   
             <Login />
-            <header className="p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900/50 backdrop-blur-lg sticky top-0 w-full">
+            <header className="sticky top-0 p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900/50 backdrop-blur-lg w-full">
                 <Link href={`/`} className='font-bold text-2xl flex items-center hover:underline'><Aperture className='mr-2' />SP Memo</Link>
                 {user ? 
                 (<>

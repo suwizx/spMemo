@@ -1,6 +1,6 @@
 "use server"
 
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc , query, where, getDocs , doc } from 'firebase/firestore'
 import { db , store } from '../lib/firebase'
 import { ref , uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
@@ -64,4 +64,14 @@ async function createPerson(formData){
     }
 }
 
-export { createPerson }
+async function getPersonData(path){
+  let data = {}
+    const q = query(collection(db, "person"), where("link", "==", path));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        data = doc.data()
+    });
+    return data
+}
+
+export { createPerson , getPersonData }

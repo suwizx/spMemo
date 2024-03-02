@@ -107,7 +107,8 @@ export default function Page(){
                             <div className='p-2 bg-zinc-800 rounded-lg'>
                                 {loadingList ? (<><Loader2 className="animate-spin" />Loading...</>) : (
                                 <>
-                                    {filteredPerson.map(data,i => (
+                              
+                                    {filteredPerson.map((data,i) => (
                                         <button key={i} onClick={(e) => {changePath(e,data.link)}} className='p-2 hover:bg-zinc-900 w-full flex justify-between rounded-lg items-center'>
                                             <p>{data.name} ({data.link})</p>
                                             <button className='py-1 px-2 rounded-md ml-2 bg-zinc-900 border-2 border-zinc-900 hover:bg-zinc-800'>เลือก</button>
